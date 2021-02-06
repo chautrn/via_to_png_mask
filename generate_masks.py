@@ -25,11 +25,11 @@ def get_polygon(region):
 
 def draw_mask(image_path, file_name, polygons, output_path):
     img = Image.open(os.path.join(image_path, file_name))
-    mask = Image.new('L', img.size, color=255)
+    mask = Image.new('L', img.size, color=0)
     draw = ImageDraw.Draw(mask)
     for polygon in polygons:
-        draw.polygon(polygon, fill=0)
-    mask.save(os.path.join(output_path, file_name))
+        draw.polygon(polygon, fill=255)
+    mask.save(os.path.join(output_path, file_name[:-3] + 'png'))
 
 
 def main():
